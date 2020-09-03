@@ -4,7 +4,7 @@ Upload files via [uPic](https://github.com/gee1k/uPic).
 
 ## Usage
 
-![Usage](https://github.com/fjc0k/vscode-uPic/raw/master/usage.png)
+<img src="https://cdn.jsdelivr.net/gh/fjc0k/vscode-uPic/usage.png" width="300" />
 
 ### Upload via uPic & Copy Urls
 
