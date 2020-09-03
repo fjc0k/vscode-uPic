@@ -1,0 +1,7 @@
+*
+*/**
+!README.md
+!CHANGELOG.md
+!LICENSE
+!logo.png
+!dist/*

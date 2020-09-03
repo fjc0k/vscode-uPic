@@ -1,0 +1,112 @@
+{
+  "name": "vscode-upic",
+  "displayName": "uPic",
+  "version": "1.0.0",
+  "description": "Upload files via uPic.",
+  "categories": [
+    "Other"
+  ],
+  "homepage": "https://github.com/fjc0k/vscode-uPic#readme",
+  "bugs": {
+    "url": "https://github.com/fjc0k/vscode-uPic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjc0k/vscode-uPic.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jay Fong",
+    "email": "fjc0kb@gmail.com",
+    "url": "https://github.com/fjc0k"
+  },
+  "publisher": "JayFong",
+  "main": "dist/extension.js",
+  "scripts": {
+    "build": "shx rm -rf dist && rollup -c",
+    "dev": "shx rm -rf dist && tsc -w",
+    "release": "npm run build && standard-version -a && git push --follow-tags origin master && vsce publish"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "uPic.uploadThenCopyUrls",
+        "title": "Upload via uPic & Copy Urls"
+      },
+      {
+        "command": "uPic.uploadThenCopyIndex",
+        "title": "Upload via uPic & Copy Index"
+      }
+    ],
+    "configuration": {
+      "title": "uPic",
+      "properties": {
+        "uPic.cliPath": {
+          "type": "string",
+          "default": "/Applications/uPic.app/Contents/MacOS/uPic",
+          "description": "Absolute path to uPic bin file"
+        }
+      }
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "isMac && isFileSystemResource",
+          "command": "uPic.uploadThenCopyUrls"
+        },
+        {
+          "when": "isMac && isFileSystemResource",
+          "command": "uPic.uploadThenCopyIndex"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onCommand:uPic.uploadThenCopyUrls",
+    "onCommand:uPic.uploadThenCopyIndex"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css,less,scss,sass,html,htm,vue,yml,yaml,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/vscode": "1.14.0",
+    "clipboardy": "~2.3.0",
+    "codecov": "^3",
+    "esbuild": "^0.6.30",
+    "eslint": "^7",
+    "execa": "~4.0.3",
+    "haoma": "^2.4.3",
+    "husky": "^4",
+    "jest": "^26",
+    "lint-staged": "^10",
+    "prettier": "^2",
+    "rollup": "^2.26.9",
+    "rollup-plugin-esbuild": "^2.5.0",
+    "rollup-plugin-terser": "^7.0.1",
+    "shx": "^0.3.2",
+    "standard-version": "^9.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^3"
+  },
+  "engines": {
+    "vscode": "^1.14.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "icon": "logo.png"
+}
