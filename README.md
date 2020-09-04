@@ -1,4 +1,4 @@
-# vscode-upic
+# vscode-uPic
 
 Upload files via [uPic](https://github.com/gee1k/uPic).
 
